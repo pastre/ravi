@@ -1,4 +1,4 @@
-const MockedDatastoreBackend = require('./backends/MockedDatastoreBackend')
+const { MockedDatastoreBackend } = require('./backends/MockedDatastoreBackend')
 let datastoreBackend = new MockedDatastoreBackend()
 
 getEvents = () => datastoreBackend.getEvents()
