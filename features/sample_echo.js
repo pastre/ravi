@@ -1,5 +1,6 @@
 // import { DatabaseFacade } from "./data/Datastore.js" 
 const DatabaseFacade = require("./data/Datastore.js" )
+const CommandProvider = require("./command/CommandProvider.js" )
 
 class AbstractCommand {
 	constructor(name, commandArgs, helpDescription) {
@@ -50,21 +51,6 @@ class EventsCommand extends AbstractCommand {
 	}
 	
 	getResponse = (args) => (args.lenght < 1) ? this.helpDescription : this.buildResponse(args[0], args[1])
-}
-
-class CommandProvider {
-
-	constructor() {
-		this.commands = [
-			new EventsCommand()
-		]
-
-		let names = this.commands.flatMap( command => command.name ) 
-		this.commands.push(new HelpCommand(names, this))
-	}
-
-	getCommand = (named) =>  this.commands.find( command => named === command.name )
-	getCommands = () => this.commands
 }
 
 class CommandHandler {
