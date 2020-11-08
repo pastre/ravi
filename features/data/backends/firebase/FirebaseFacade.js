@@ -1,15 +1,7 @@
 var admin = require("firebase-admin");
-const { FirebaseEvent } = require("./FirebaseEvent")
-const { FirebaseSubscription } = require("./FirebaseSubscription")
+const { FirebaseUser, FirebaseEvent, FirebaseSubscription } = require("./Model")
 
 let userEmail = "test1e@gmail.com"
-
-class User {
-	constructor(id, email) {
-		this.id = id
-		this.email = email
-	}
-}
 
 class FirebaseFacade {
 	constructor() {
@@ -37,7 +29,7 @@ class FirebaseFacade {
 		let userSnapshot = await this.db.collection('users').get()
 		userSnapshot.forEach ( doc => {
 			if (!doc.data().email === userEmail) { return }
-			this.user = new User(doc.id, doc.data().email)
+			this.user = new FirebaseUser(doc.id, doc.data().email)
 		})
 		console.log(JSON.stringify(this.user))
 		if(this.user) { return }
