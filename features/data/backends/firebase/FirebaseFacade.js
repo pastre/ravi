@@ -57,7 +57,7 @@ class FirebaseFacade {
 
 			let firebaseEvent = await doc.data().event.get()
 			let event = this.loadEvent(firebaseEvent.id, firebaseEvent.data())
-			let newSubscription = this.loadSubscription(this.user, event)
+			let newSubscription = this.loadSubscription(doc.id, this.user, event)
 			console.log(JSON.stringify(newSubscription))
 			this.subscriptions.push(newSubscription)
 		})
@@ -72,7 +72,7 @@ class FirebaseFacade {
 		if (snapshot) { return new FirebaseEvent(id, snapshot.name, snapshot.triggerTimestamp, snapshot.type) }	
 	}
 
-	loadSubscription = (id, snapshot) => new FirebaseSubscription(id, snapshot)
+	loadSubscription = (id, user, event) => new FirebaseSubscription(id, user, event)
 	getSubscriptions = () => this.subscriptions
 }
 
