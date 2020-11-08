@@ -66,11 +66,7 @@ class FirebaseFacade {
 	// PRIVATE API
 	getEvents = () => this.events
 	findEvent = (id) => this.events.find(e => e.id === id)
-	loadEvent = (id, snapshot) => {
-		let cached = this.findEvent(id)
-		if (cached) { return cached }
-		if (snapshot) { return new FirebaseEvent(id, snapshot.name, snapshot.triggerTimestamp, snapshot.type) }	
-	}
+	loadEvent = (id, snapshot) =>  this.findEvent(id) || new FirebaseEvent(id, snapshot.name, snapshot.triggerTimestamp, snapshot.type)
 
 	loadSubscription = (id, user, event) => new FirebaseSubscription(id, user, event)
 	getSubscriptions = () => this.subscriptions

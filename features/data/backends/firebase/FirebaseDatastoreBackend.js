@@ -10,10 +10,10 @@ class FirebaseDatastoreBackend extends AbstractDatastoreBackend {
 
 
 	// PUBLIC API
-	getEvents = () => this.facade.getEvents().flatMap(e => e.name)
-	getEventByName = (eventName) => this.facade.getEvents().find(event => eventName === event.name).name
+	getEvents = () => this.facade.getEvents()
+	getEventByName = (eventName) => this.facade.getEvents().find(event => eventName === event.name)
 
-	getSubscriptions = () => this.facade.getSubscriptions().flatMap(s => s.event.name)
+	getSubscriptions = () => this.facade.getSubscriptions()
 	addSubscription(event) {  }
 }
 
