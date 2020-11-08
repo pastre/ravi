@@ -1,24 +1,5 @@
-class Datastore {
-	constructor() {
-		this.events = ["get_together", "apple_talk"]
-		this.subscriptions = ['event']
-	}
-
-	getEvents = () => this.events
-	getSubscriptions = () => this.subscriptions
-	addSubscription(event) { this.subscriptions.push(event) }
-}
-
-let DatabaseFacade = (function () {
-    var _shared
-
-    return {
-        shared: function () {
-            if (!_shared) { _shared = new Datastore() }
-            return _shared;
-        }
-    }
-})()
+// import { DatabaseFacade } from "./data/Datastore.js" 
+const DatabaseFacade = require("./data/Datastore.js" )
 
 class AbstractCommand {
 	constructor(name, commandArgs, helpDescription) {
@@ -45,16 +26,14 @@ class EventsCommand extends AbstractCommand {
 	}
 
 	onSubscribe = (eventName) => {
-		let datastore = DatabaseFacade.shared()
-		let event = datastore.events.find(event => eventName === event)
+		let event = DatabaseFacade.getEventByName(eventName)
 		if (!event) { return `Oops! Didn't find this event! <br />${this.helpDescription}`}
-		datastore.addSubscription(event)
+		DatabaseFacade.addSubscription(event)
 		return `Pronto! Vc sera notificado quando ${event} rolar!`
 	}
 
-	onList() {
-		let datastore = DatabaseFacade.shared()
-		let events = datastore.getSubscriptions()
+	onList() {		
+		let events = DatabaseFacade.getSubscriptions()
 		return `Seus eventos: ${events}`
 	}
 
