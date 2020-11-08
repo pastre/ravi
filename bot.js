@@ -47,7 +47,7 @@ if (process.env.CMS_URI) {
 controller.ready(() => {
 
     // load traditional developer-created local custom feature modules
-    controller.loadModule(__dirname + '/features/sample_echo.js');
+    controller.loadModule(__dirname + '/features/command_parser.js');
     controller.loadModule(__dirname + '/features/chat.js');
 
     /* catch-all that uses the CMS to trigger dialogs */
