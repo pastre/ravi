@@ -5,7 +5,7 @@ class FirebaseDatastoreBackend extends AbstractDatastoreBackend {
 
 	constructor() {
 		super()
-		this.facade = new FirebaseFacade()
+		this.facade = new FirebaseFacade( this.callCachedCallbacks )
 	}
 
 

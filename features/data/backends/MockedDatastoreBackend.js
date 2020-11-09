@@ -2,6 +2,7 @@ const { AbstractDatastoreBackend } = require('./AbstractDatastoreBackend')
 
 class MockedDatastoreBackend extends AbstractDatastoreBackend {
 	constructor() {
+		super()
 		this.events = ["get_together", "apple_talk"]
 		this.subscriptions = ['event']
 	}

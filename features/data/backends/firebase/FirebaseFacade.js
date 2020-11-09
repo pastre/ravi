@@ -4,7 +4,10 @@ const { FirebaseUser, FirebaseEvent, FirebaseSubscription } = require("./Model")
 let userEmail = "test1e@gmail.com"
 
 class FirebaseFacade {
-	constructor() {
+
+	constructor(k) {
+		console.log(JSON.stringify(k))
+		this.loadedCallback = () => k()
 		this.initFirebase()
 		this.bootFirebase()
 	}
@@ -22,8 +25,10 @@ class FirebaseFacade {
 	async bootFirebase() {
 		await this.loadUser()
 		await this.loadEvents()
-		this.loadSubscriptions()
+		await this.loadSubscriptions()
+		this.loadedCallback()
 	}
+
 
 	async loadUser() {
 		let userSnapshot = await this.db.collection('users').get()

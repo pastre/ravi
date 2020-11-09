@@ -8,4 +8,6 @@ getEventByName = (name) => datastoreBackend.getEventByName(name)
 getSubscriptions = () => datastoreBackend.getSubscriptions()
 addSubscription = (event) => datastoreBackend.addSubscription(event)
 
-module.exports = { getEvents, getSubscriptions, addSubscription, getEventByName  }
+ready = (callback) => datastoreBackend.ready(callback)
+
+module.exports = { getEvents, getSubscriptions, addSubscription, getEventByName, ready  }
