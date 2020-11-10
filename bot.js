@@ -25,7 +25,10 @@ const controller = new Botkit({
 
 
 function setpSubscription(subscription) {
-    DatabaseFacade.ready( () => console.log("AEEEEEEEE") )
+    DatabaseFacade.ready( () => {
+        let subscriptions = DatabaseFacade.getSubscriptions()
+        console.log("SUBSCRITPIONS ARE", subscriptions)
+    })
 }
 
 // Once the bot has booted up its internal services, you can use them to do stuff.

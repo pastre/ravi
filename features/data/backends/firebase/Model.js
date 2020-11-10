@@ -1,18 +1,18 @@
-class FirebaseSubscription {
+class Subscription {
 	constructor(id, user, event) {
 		this.user = user
 		this.event = event
 	}
 }
 
-class FirebaseUser {
+class User {
 	constructor(id, email) {
 		this.id = id
 		this.email = email
 	}
 }
 
-class FirebaseEvent {
+class Event {
 	constructor(id, name, triggerTimestamp, type) {
 		this.id = id
 		this.name = name 
@@ -46,4 +46,4 @@ class FirebaseEvent {
 
 }
 
-module.exports = { FirebaseUser, FirebaseEvent, FirebaseSubscription }
+module.exports = { User, Event, Subscription }
