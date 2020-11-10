@@ -16,6 +16,7 @@ class AbstractDatastoreBackend {
 	}
 
 	callCachedCallbacks = () =>  {
+		this.isReady = true
 		this.onReadyCallbacks.forEach( c => c() )
 	}
 

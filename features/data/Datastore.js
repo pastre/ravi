@@ -1,6 +1,6 @@
 const { MockedDatastoreBackend } = require('./backends/MockedDatastoreBackend')
 const { FirebaseDatastoreBackend } = require('./backends/firebase/FirebaseDatastoreBackend')
-let datastoreBackend = new FirebaseDatastoreBackend()
+let datastoreBackend = new MockedDatastoreBackend()
 
 getEvents = () => datastoreBackend.getEvents()
 getEventByName = (name) => datastoreBackend.getEventByName(name)

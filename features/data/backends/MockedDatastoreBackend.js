@@ -1,4 +1,5 @@
 const { AbstractDatastoreBackend } = require('./AbstractDatastoreBackend')
+const { User, Event, Subscription } = require("../Model")
 
 class MockedDatastoreBackend extends AbstractDatastoreBackend {
 	constructor() {
@@ -12,7 +13,14 @@ class MockedDatastoreBackend extends AbstractDatastoreBackend {
 				'minutely'
 			)
 		]
-		this.subscriptions = ['event']
+		this.subscriptions = [
+			new Subscription(
+				"id",
+				this.user,
+				this.events[0]
+			)
+		]
+		this.callCachedCallbacks()
 	}
 
 	getEvents = () => this.events

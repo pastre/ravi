@@ -1,12 +1,12 @@
 var admin = require("firebase-admin");
-const { User, Event, Subscription } = require("./Model")
+const { User, Event, Subscription } = require("../../Model")
 
 let userEmail = "test1e@gmail.com"
 
 class FirebaseFacade {
 
-	constructor(k) {
-		this.loadedCallback = () => k()
+	constructor(loadedCallback) {
+		this.loadedCallback = () => loadedCallback()
 		this.initFirebase()
 		this.bootFirebase()
 	}
