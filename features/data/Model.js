@@ -3,6 +3,8 @@ class Subscription {
 		this.user = user
 		this.event = event
 	}
+
+	buildText = () => "Hi! this message appears every minute! Here's a link to join a meeting https://google.com"
 }
 
 class User {

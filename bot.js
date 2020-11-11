@@ -12,7 +12,7 @@ const { WebAdapter } = require('botbuilder-adapter-web');
 
 // Import module features
 const DatabaseFacade = require(__dirname + '/features/data/Datastore')
-const { SchedulerFacade } = require(__dirname + '/features/scheduler/Scheduler')
+const SchedulerFacade = require(__dirname + '/features/scheduler/Scheduler')
 
 // Load process.env values from .env file
 require('dotenv').config();
@@ -23,11 +23,21 @@ const controller = new Botkit({
     adapter: adapter,
 });
 
+async function message(subscription) {
+    console.log("AEEEEE")
+    let text = subscription.buildText()
+    let bot = await controller.spawn();
+
+    await bot.startConversationWithUser(user);
+    await bot.say('ALERT! A trigger was detected');
+}
 
 function setpSubscription(subscription) {
     DatabaseFacade.ready( () => {
         let subscriptions = DatabaseFacade.getSubscriptions()
-        console.log("SUBSCRITPIONS ARE", subscriptions)
+        subscriptions.forEach( subscription => {
+            SchedulerFacade.scheduleEvent(subscription.event, () => message(subscription) )
+        })
     })
 }
 

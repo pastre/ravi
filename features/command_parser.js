@@ -1,7 +1,6 @@
 const { CommandProvider } = require("./command/CommandProvider.js" )
 const { CommandHandler } = require("./command/CommandHandler.js" )
 
-
 module.exports = function(controller) {
 
     controller.hears(new RegExp(/^\/\w+/),'message,direct_message', async(bot, message) => {
