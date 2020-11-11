@@ -1,10 +1,5 @@
-# Botkit Starter Kit
+# 🤖 RAVI
+### Robo Altamente Versátil e Inteligente
 
-This is a Botkit starter kit for web, created with the [Yeoman generator](https://github.com/howdyai/botkit/tree/master/packages/generator-botkit#readme).
-
-To complete the configuration of this bot, make sure to update the included `.env` file with your platform tokens and credentials.
-
-[Botkit Docs](https://botkit.ai/docs/v4)
-
-This bot is powered by [a folder full of modules](https://botkit.ai/docs/v4/core.html#organize-your-bot-code). 
-Edit the samples, and add your own in the [features/](features/) folder.
+This is a Proof of Concept for developing a bot using BotKit and cron. It does not talk (yet), but it is ready to be integrated with [Ryver's Official BotKit Connector](https://www.npmjs.com/package/botkit-ryver-connector) and start talking!
+This POC currently schedule's events and prints when they occur + is persistent with a cloud database
